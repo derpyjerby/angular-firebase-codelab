@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { DocumentData } from '@angular/fire/firestore';
+import { DocumentData } from '@angular/fire/firestore/lite';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ChatService } from 'src/app/services/chat.service';
