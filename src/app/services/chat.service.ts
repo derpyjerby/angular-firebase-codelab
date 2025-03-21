@@ -142,10 +142,19 @@ export class ChatService {
   // Loads chat message history and listens for upcoming ones.
   loadMessages = () => {
     // Create the query to load the last 12 messages and listen for new ones.
-    const recentMessagesQuery = query(collection(this.firestore, '/messages'), orderBy('timestamp', 'desc'), limit(12));
+    const recentMessagesQuery = query(collection(this.firestore, 'messages'), orderBy('timestamp', 'desc'), limit(12));
     
-    // Start listening to the query.
-    return collectionData(recentMessagesQuery);
+    return onSnapshot(recentMessagesQuery, (snapshot) => {
+      const messages: DocumentData[] = [];
+      snapshot.forEach((doc) => {
+        messages.push({
+          id: doc.id,
+          ...doc.data()
+        });
+      });
+      // Do something with messages
+      console.log(messages);
+    });
   };
 
   // Saves a new message containing an image in Firebase.
