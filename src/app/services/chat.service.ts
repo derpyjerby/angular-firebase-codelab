@@ -153,7 +153,7 @@ export class ChatService {
         });
       });
       // Do something with messages
-      console.log(messages);
+      return collectionData(recentMessagesQuery);
     });
   };
 
