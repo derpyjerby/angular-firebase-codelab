@@ -18,6 +18,10 @@ export class ChatPageComponent {
   user$ = this.chatService.user$;
   text = '';
 
+  ngOnInit() {
+    this.messages$.subscribe(messages => console.log('Messages:', messages));
+  }
+  
   sendTextMessage() {
     this.chatService.saveTextMessage(this.text);
     this.text = '';
