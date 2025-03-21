@@ -14,7 +14,7 @@ import { ChatService } from 'src/app/services/chat.service';
 })
 export class ChatPageComponent {
   chatService = inject(ChatService);
-  messages$ = this.chatService.loadMessages() as Observable<DocumentData[]>;
+  messages$ = this.chatService.loadMessages() as unknown as Observable<DocumentData[]>;
   user$ = this.chatService.user$;
   text = '';
 
